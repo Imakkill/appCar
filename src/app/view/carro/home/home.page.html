@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="logout()" color="dark">
+        <ion-icon name="exit-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title class="header-title">
+      GARAGEM🛠
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list *ngFor="let carro of lista_carro">
+    <ion-item (click)="editar(carro)">
+      <ion-avatar *ngIf="carro.downloadURL != null">
+        <img src="{{carro.downloadURL}}" />
+      </ion-avatar>
+      <ion-avatar *ngIf="carro.downloadURL == null">
+        <img src="assets/avatar.png" />
+      </ion-avatar>
+      <ion-label style="margin-left: 5%;">{{carro.modelo}}</ion-label>
+    </ion-item>
+  </ion-list>
+
+  <ion-fab horizontal="end" vertical="bottom">
+    <ion-fab-button (click)="irParaCadastrar()">
+      <ion-icon name="person-add-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>

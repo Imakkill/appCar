@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Cadastre um Carro</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item>
+      <ion-input label="modelo" placeholder="Insira o nome" [(ngModel)]="modelo"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input label="marca" placeholder="Insira a marca" type="text" [(ngModel)]="marca"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Ano</ion-label>
+      <ion-input type="number" [(ngModel)]="ano"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Carroceria</ion-label>
+      <ion-select placeholder="Escolha o tipo de carroceria" [(ngModel)]="carroceria">
+        <ion-select-option *ngFor="let tipo of tiposCarroceria" [value]="tipo">{{ tipo }}</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-button size="default" color="success" shape="round">
+        <input type="file" (change)="uploadFile($event.target)"/>
+      </ion-button>
+    </ion-item>
+    <ion-button expand="block" (click)="cadastrar()">Cadastrar</ion-button>
+  </ion-list>
+</ion-content>

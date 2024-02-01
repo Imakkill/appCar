@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="voltar()">
+        <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>GARAGEM</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-list>
+    <ion-item>
+      <ion-toggle (ionChange)="habilitar()">Habilitar Edição</ion-toggle>
+    </ion-item>
+    <ion-item>
+      <ion-input label="modelo" placeholder="Insira o nome" [(ngModel)]="modelo" disabled="{{edicao}}"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input label="marca" placeholder="Insira a marca" type="text" [(ngModel)]="marca" disabled="{{edicao}}"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Carroceria</ion-label>
+      <ion-select placeholder="Escolha o tipo de carroceria" [(ngModel)]="carroceria" disabled="{{edicao}}">
+        <ion-select-option *ngFor="let tipo of tiposCarroceria" [value]="tipo">{{ tipo }}</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-input label="ano" placeholder="Insira o ano" type="number" [(ngModel)]="ano" disabled="{{edicao}}"></ion-input>
+    </ion-item>
+    <ion-item *ngIf="carro.downloadURL != null">
+      <img src="{{carro.downloadURL}}" />
+    </ion-item>
+    <ion-button size="default" color="success" shape="round" disabled="{{edicao}}">
+      <input type="file" (change)="uploadFile($event.target)" />
+    </ion-button>
+    <ion-button expand="block" (click)="editar()" disabled="{{edicao}}">Salvar</ion-button>
+    <ion-button expand="block" (click)="excluir()" disabled="{{edicao}}" color="danger">Excluir</ion-button>
+  </ion-list>
+</ion-content>

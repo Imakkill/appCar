@@ -1,0 +1,31 @@
+.header-title {
+    text-align: center;
+    font-size: 1.5rem; /* Ajuste o tamanho da fonte conforme desejado */
+    font-weight: bold;
+    margin-left: auto;
+    margin-right: auto;
+    color: #333; /* Ajuste a cor do texto conforme desejado */
+  }
+  
+  /* Estilo adicional para o botão de logout */
+  ion-button {
+    background-color: #71707c; /* Cor de fundo */
+    color: #fff; /* Cor do texto */
+    border-radius: 8px; /* Borda arredondada */
+    margin-top: 10px; /* Espaçamento superior */
+  }
+  
+  /* Estilo adicional para a lista de carros */
+  ion-list ion-item {
+    background-color: #797373; /* Cor de fundo da lista */
+    border-radius: 8px; /* Borda arredondada */
+    margin-bottom: 10px; /* Espaçamento inferior */
+  }
+  
+  /* Estilo adicional para o botão de adicionar carro */
+  ion-fab-button {
+    background-color: #ffffff; /* Cor de fundo */
+    color: #fff; /* Cor do ícone */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Sombra */
+  }
+  
