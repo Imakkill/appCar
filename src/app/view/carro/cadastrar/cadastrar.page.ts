@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+
 import { Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
 import Carro from 'src/app/model/entities/Carro';
@@ -18,7 +19,7 @@ export class CadastrarPage implements OnInit {
   public carroceria : string;
   public ano : number
   public user: any;
-  formCadastrar : FormGroup
+  formCadastrar : FormGroup;
 
   tiposCarroceria = ['Sedan', 'Hatch', 'Pickup'];
 
@@ -27,6 +28,7 @@ export class CadastrarPage implements OnInit {
     private router : Router,
     private firebase: FirebaseService,
     private auth : AuthService)  {
+
       this.formCadastrar = new FormGroup({
         modelo: new FormControl(''),
         marca: new FormControl(''),
@@ -50,8 +52,8 @@ export class CadastrarPage implements OnInit {
  }
 
   cadastrar(){
-    if(this.formCadastrar && this.marca && this.carroceria && this.ano){
-      let novo : Carro = new Carro(this.modelo, this.marca, this.carroceria, this.ano);
+    if(this.formCadastrar.value['modelo'] && this.formCadastrar.value['marca'] && this.formCadastrar.value['ano'] && this.formCadastrar.value['carroceria']){
+      let novo : Carro = new Carro(this.formCadastrar.value['modelo'], this.formCadastrar.value['marca'], this.formCadastrar.value['ano'], this.formCadastrar.value['carroceria']);
       novo.uid = this.user.uid;
       if(this.imagem){
         this.firebase.uploadImage(this.imagem, novo)
@@ -63,6 +65,9 @@ export class CadastrarPage implements OnInit {
     }else{
      this.presentAlert("Erro", "Campos Obrigatórios!");
     }
+  }
+  voltar(){
+    this.router.navigate(["/home"]);
   }
 
   async presentAlert(subHeader : string, message : string) {

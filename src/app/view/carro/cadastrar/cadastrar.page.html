@@ -1,32 +1,43 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Cadastre um Carro</ion-title>
+    <ion-buttons slot="start">
+      <ion-button (click)="voltar()">
+        <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Cadastre um Carro 🚗</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-list>
-    <ion-item>
-      <ion-input label="modelo" placeholder="Insira o nome" [(ngModel)]="modelo"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-input label="marca" placeholder="Insira a marca" type="text" [(ngModel)]="marca"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label>Ano</ion-label>
-      <ion-input type="number" [(ngModel)]="ano"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label>Carroceria</ion-label>
-      <ion-select placeholder="Escolha o tipo de carroceria" [(ngModel)]="carroceria">
-        <ion-select-option *ngFor="let tipo of tiposCarroceria" [value]="tipo">{{ tipo }}</ion-select-option>
-      </ion-select>
-    </ion-item>
-    <ion-item>
-      <ion-button size="default" color="success" shape="round">
-        <input type="file" (change)="uploadFile($event.target)"/>
-      </ion-button>
-    </ion-item>
-    <ion-button expand="block" (click)="cadastrar()">Cadastrar</ion-button>
-  </ion-list>
+  <form [formGroup]="formCadastrar" (ngSubmit)="cadastrar()">
+    <ion-list>
+      <ion-item>
+        <ion-input label="modelo" placeholder="Insira o nome" formControlName="modelo"></ion-input>
+        <span *ngIf="formCadastrar.get('modelo')?.touched && formCadastrar.get('modelo')?.hasError('required')">Modelo obrigatório</span>
+      </ion-item>
+      <ion-item>
+        <ion-input label="marca" placeholder="Insira a marca" type="text" formControlName="marca"></ion-input>
+        <span *ngIf="formCadastrar.get('marca')?.touched && formCadastrar.get('marca')?.hasError('required')">Marca obrigatória</span>
+      </ion-item>
+      <ion-item>
+        <ion-label>Ano</ion-label>
+        <ion-input type="number" formControlName="ano"></ion-input>
+        <span *ngIf="formCadastrar.get('ano')?.touched && formCadastrar.get('ano')?.hasError('required')">Ano obrigatório</span>
+      </ion-item>
+      <ion-item>
+        <ion-label>Carroceria</ion-label>
+        <ion-select placeholder="Escolha o tipo de carroceria" formControlName="carroceria">
+          <ion-select-option *ngFor="let tipo of tiposCarroceria" [value]="tipo">{{ tipo }}</ion-select-option>
+        </ion-select>
+        <span *ngIf="formCadastrar.get('carroceria')?.touched && formCadastrar.get('carroceria')?.hasError('required')">Carroceria obrigatória</span>
+      </ion-item>
+      <ion-item>
+        <ion-button size="default" color="success" shape="round">
+          <input type="file" (change)="uploadFile($event.target)" />
+        </ion-button>
+      </ion-item>
+      <ion-button expand="block" type="submit" [disabled]="!formCadastrar.valid">Cadastrar</ion-button>
+    </ion-list>
+  </form>
 </ion-content>
