@@ -1,0 +1,36 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Carros</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="fazerLogout()">
+        <ion-icon name="log-out"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Carros</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-grid>
+    <ion-searchbar placeholder="Pesquisar Carro..." (ionChange)="onSearchChange($event)"></ion-searchbar>
+    <app-loading-screen *ngIf="!isLoading"></app-loading-screen>
+    <app-empty-screen *ngIf="CarroFiltred.length == 0 && isSearching"></app-empty-screen>
+    <app-empty-screen *ngIf="CarroFiltred.length == 0 && !isSearching && CarroFiltred.length == 0"></app-empty-screen>
+    <ion-row>
+      <ion-col size="12">
+        <ng-container *ngIf="!isSearching">
+          <app-carro-component *ngFor="let carro of CarroCatalog; let i = index" [carro]="carro" (click)="editar(carro)"></app-carro-component>
+        </ng-container>
+        <ng-container *ngIf="isSearching">
+          <app-carro-component *ngFor="let carro of CarroFiltred; let i = index" [carro]="carro" (click)="editar(carro)"></app-carro-component>
+        </ng-container>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-button  expand="full" (click)="irParaCadastrarPage()">Cadastrar Carro</ion-button>
+</ion-content>

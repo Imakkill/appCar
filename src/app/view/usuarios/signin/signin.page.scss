@@ -1,0 +1,72 @@
+/* Adicione essas regras ao seu arquivo CSS */
+
+ion-header {
+  --ion-background-color: #4caf50; /* Cor de fundo do cabeçalho */
+  color: #fff; /* Cor do texto do cabeçalho */
+}
+
+ion-toolbar {
+  --ion-color-base: #4caf50; /* Cor principal da barra de ferramentas */
+  --ion-color-light: #4caf50; /* Cor da sombra da barra de ferramentas */
+}
+
+ion-title {
+  font-size: 1.8rem; /* Tamanho da fonte do título */
+  font-weight: bold;
+}
+
+ion-content {
+  --ion-background-color: #f5f5f5; /* Cor de fundo do conteúdo */
+}
+
+ion-list {
+  background-color: #ffffff; /* Cor de fundo da lista */
+  padding: 20px; /* Espaçamento interno da lista */
+  border-radius: 10px; /* Borda arredondada da lista */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
+}
+
+ion-item {
+  --ion-background-color: transparent; /* Fundo transparente dos itens */
+  border-bottom: 1px solid #ccc; /* Linha divisória entre os itens */
+}
+
+ion-label {
+  color: #333; /* Cor do rótulo */
+}
+
+ion-input {
+  border-radius: 8px; /* Borda arredondada do input */
+}
+
+ion-button {
+  --ion-background-color: #4caf50; /* Cor de fundo dos botões */
+  --ion-text-color: #fff; /* Cor do texto dos botões */
+  border-radius: 8px; /* Borda arredondada dos botões */
+  margin-top: 10px; /* Espaçamento superior */
+}
+
+ion-button[expand="full"] {
+  width: 80%; /* Largura dos botões de largura total */
+}
+
+a {
+  color: #4caf50; /* Cor do link "Não tem Cadastro?" */
+  text-decoration: none; /* Remover sublinhado padrão */
+  display: block; /* Tornar o link um bloco para melhor espaçamento */
+  margin-top: 15px; /* Espaçamento superior do link */
+}
+
+a:hover {
+  text-decoration: underline; /* Sublinhado ao passar o mouse */
+}
+
+/* Adicione mais estilos se necessário */
+
+/* Estilos específicos para mensagens de erro */
+span {
+  color: #ff0000; /* Cor do texto de erro */
+  font-size: 0.9rem; /* Tamanho da fonte do texto de erro */
+  display: block; /* Tornar as mensagens de erro blocos para melhor espaçamento */
+  margin-top: 5px; /* Espaçamento superior das mensagens de erro */
+}

@@ -1,0 +1,66 @@
+<form [formGroup]="formCarroAtualiza" (ngSubmit)="editar()">
+  <ion-row>
+    <ion-col size="12">
+      <ion-item>
+        <ion-label position="floating">Modelo</ion-label>
+        <ion-input formControlName="modelo" [(ngModel)]="carro.modelo"></ion-input>
+      </ion-item>
+      <ion-note *ngIf="formCarroAtualiza.get('modelo')?.touched && formCarroAtualiza.get('modelo')?.hasError('required')">Título obrigatório</ion-note>
+    </ion-col>
+
+    <ion-col size="12">
+      <ion-item>
+        <ion-label position="floating">Marca</ion-label>
+        <ion-input formControlName="marca" [(ngModel)]="carro.marca"></ion-input>
+      </ion-item>
+      <ion-note *ngIf="formCarroAtualiza.get('marca')?.touched && formCarroAtualiza.get('marca')?.hasError('required')">Gênero obrigatório</ion-note>
+      <ion-note *ngIf="formCarroAtualiza.get('marca')?.touched && formCarroAtualiza.get('marca')?.hasError('pattern')">Gênero deve iniciar com letra maiúscula</ion-note>
+    </ion-col>
+
+    <ion-col size="12">
+      <ion-item >
+        <ion-label position="floating">Ano</ion-label>
+        <ion-input formControlName="ano" [(ngModel)]="carro.ano"></ion-input>
+      </ion-item>
+      <ion-note *ngIf="formCarroAtualiza.get('ano')?.touched && formCarroAtualiza.get('ano')?.hasError('required')">Ano de lançamento obrigatório</ion-note>
+      <ion-note *ngIf="formCarroAtualiza.get('ano')?.touched && formCarroAtualiza.get('ano')?.hasError('pattern')">Ano de lançamento deve ter 4 dígitos numéricos</ion-note>
+    </ion-col>
+
+    <ion-col size="12">
+      <ion-item >
+        <ion-label>Carroceria</ion-label>
+        <ion-select placeholder="Sua avaliação sobre o carro" formControlName="carroceria" [(ngModel)]="carro.carroceria">
+          <ion-select-option value="Sedan">Sedan</ion-select-option>
+          <ion-select-option value="Hatch">Hatch</ion-select-option>
+          <ion-select-option value="Pickup">Pickup</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-note *ngIf="formCarroAtualiza.get('carroceria')?.touched && formCarroAtualiza.get('carroceria')?.hasError('required')">Avaliação obrigatória</ion-note>
+    </ion-col>
+    <ion-col size="12">
+      <ion-item>
+        <img [src]="carro.downloadURL" />
+      </ion-item>
+    </ion-col>
+
+    <ion-col size="12">
+      <ion-item>
+        <ion-button size="default" color="dark" shape="round" (click)="uploadImagem($event)">
+          Alterar Imagem
+        </ion-button>
+      </ion-item>
+    </ion-col>
+
+    <ion-col size="12">
+      <ion-button expand="block" [disabled]="!todosCamposPreenchidos()" color="primary" type="submit">
+        Salvar
+      </ion-button>
+    </ion-col>
+
+    <ion-col size="12">
+      <ion-button expand="block" color="danger" (click)="excluir()">
+        Excluir
+      </ion-button>
+    </ion-col>
+  </ion-row>
+</form>

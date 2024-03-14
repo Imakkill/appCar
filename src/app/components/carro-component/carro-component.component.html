@@ -1,0 +1,15 @@
+<ion-row>
+  <ion-col >
+    <ion-item  class="Carro-item">
+      <ion-thumbnail *ngIf="carro.downloadURL != null " slot="start">
+        <img src="{{carro?.downloadURL}}" />
+      </ion-thumbnail>
+      <ion-icon name="car" slot="start" *ngIf="carro?.downloadURL == null"></ion-icon>
+      <ion-label>
+        <h2>{{carro.modelo}}</h2>
+        <p>Ano: {{carro?.ano}}</p>
+        <p >marca: {{carro.marca}}</p>
+      </ion-label>
+    </ion-item>
+  </ion-col>
+</ion-row>

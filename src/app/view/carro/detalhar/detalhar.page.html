@@ -1,0 +1,15 @@
+<ion-content [fullscreen]="true">
+  <ion-header [translucent]="true">
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-back-button defaultHref="/car"></ion-back-button>
+      </ion-buttons>
+      <ion-title>Detalhes do Carro</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-grid>
+    <ion-toggle (ionChange)="habilitar()"></ion-toggle>
+    <app-detalhar-component [carro]="carro" [disabled]="edicao"></app-detalhar-component>
+  </ion-grid>
+</ion-content>

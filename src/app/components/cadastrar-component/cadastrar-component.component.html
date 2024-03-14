@@ -1,0 +1,40 @@
+<ion-row>
+  <form [formGroup]="formCadastroCarro" (ngSubmit)="sendFormulario()">
+    <ion-col>
+      <ion-item>
+        <ion-input placeholder="Modelo" formControlName="modelo"></ion-input>
+      </ion-item>
+      <span *ngIf="formCadastroCarro.get('modelo')?.touched && formCadastroCarro.get('modelo')?.errors?.['required']">Modelo obrigatório</span>
+    </ion-col>
+
+    <ion-col>
+      <ion-item>
+        <ion-input placeholder="Marca" formControlName="marca"></ion-input>
+      </ion-item>
+      <span *ngIf="formCadastroCarro.get('marca')?.touched && formCadastroCarro.get('marca')?.errors?.['required']">Marca obrigatória</span>
+    </ion-col>
+
+    <ion-col size="12">
+      <ion-item>
+        <ion-input type="number" placeholder="2024" formControlName="ano"></ion-input>
+      </ion-item>
+      <span *ngIf="formCadastroCarro.get('ano')?.touched && formCadastroCarro.get('ano')?.errors?.['required']">Ano de lançamento obrigatório</span>
+      <span *ngIf="formCadastroCarro.get('ano')?.touched && formCadastroCarro.get('ano')?.hasError('pattern')">Ano de lançamento deve ter 4 dígitos numéricos</span>
+    </ion-col>
+
+    <ion-col size="12">
+      <ion-item>
+        <ion-select placeholder="Selecione a carroceria" formControlName="carroceria">
+          <ion-select-option value="Sedan">Sedan</ion-select-option>
+          <ion-select-option value="Hatch">Hatch</ion-select-option>
+          <ion-select-option value="Pickup">Pickup</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <span *ngIf="formCadastroCarro.get('carroceria')?.touched && formCadastroCarro.get('carroceria')?.errors?.['required']">Carroceria obrigatória</span>
+    </ion-col>
+
+    <ion-col size="12">
+      <ion-button expand="block" type="submit">Cadastrar</ion-button>
+    </ion-col>
+  </form>
+</ion-row>
